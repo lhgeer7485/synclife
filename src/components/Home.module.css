@@ -1,5 +1,42 @@
 .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+    overflow-y: scroll;
+}
+
+.mainBox {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 90%;
+}
+
+.header {
+    color: #1a1a1a;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: left;
+    width: 90%;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.p{
+    margin: 10px 0;
+}
+
+.betweenBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
 }

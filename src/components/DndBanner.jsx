@@ -1,38 +1,43 @@
 import { Draggable, Droppable } from "@hello-pangea/dnd";
 import styles from "./DndBanner.module.css";
 import ZustandStore from "../stores/store.jsx";
+import Card from "./Card.jsx";
 
-const DndBanner = ({ idx }) => {
+const DndBanner = ({ idx, name }) => {
   const data = ZustandStore((state) => state.data);
   return (
-    <Droppable droppableId={`${idx}`}>
-      {(provided) => (
-        <div
-          className={styles.contaier}
-          ref={provided.innerRef}
-          {...provided.droppableProps}
-        >
-          {data[idx].map((item, i) => (
-            <Draggable
-              draggableId={`${item.title}-${i}`}
-              key={`${idx}-${i}`}
-              index={i}
-            >
-              {(provided) => (
-                <div
-                  ref={provided.innerRef}
-                  {...provided.draggableProps}
-                  {...provided.dragHandleProps}
-                >
-                  {item.title}
-                </div>
-              )}
-            </Draggable>
-          ))}
-          {provided.placeholder}
-        </div>
-      )}
-    </Droppable>
+    <main className={styles.container}>
+      <header className={styles.header}>{name}</header>
+      <Droppable droppableId={`${idx}`}>
+        {(provided) => (
+          <div
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+            className={styles.dropBox}
+          >
+            {data[idx].map((item, i) => (
+              <Draggable
+                draggableId={`${item.id}`}
+                key={`${item.title}-${item.id}`}
+                index={i}
+              >
+                {(provided) => (
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    className={styles.box}
+                  >
+                    <Card item={item} />
+                  </div>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+    </main>
   );
 };
 export default DndBanner;

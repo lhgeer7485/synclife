@@ -1,1 +1,31 @@
-.container {}
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0,0.01);
+    border-radius: 15px;
+}
+
+.dropBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.box {
+    width: calc(100% - 22px);
+}
+
+.header {
+    color: #545454;
+    text-align: left;
+    height: 80px;
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-weight: bolder;
+}

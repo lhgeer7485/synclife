@@ -1,0 +1,76 @@
+.container {
+    color: #545454;
+    width: 100%;
+    height: 140px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    margin: 6px 0;
+}
+
+.box {
+    width: calc(100% - 6px);
+    height: calc(100% - 12px);
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0 10px;
+    color: #545454;
+    font-weight: normal;
+}
+
+.line {
+    width: 6px;
+    height: 100%;
+    border-radius: 10px 0 0 10px;
+}
+
+.lineHigh {
+    background-color: #ff6b6b;
+}
+
+.lineMedium {
+    background-color: #4d96ff;
+}
+
+.lineLow {
+    background-color: #6bcf9b;
+}
+
+.priorityDateBox {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 20%;
+}
+
+.titleBox {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-items: flex-start;
+    font-size: 18px;
+}
+
+.descriptionBox {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-items: center;
+}
+
+.priorityBox {
+    width: 100%;
+    display: flex;
+    font-size: 16px;
+    align-items: end;
+}
+
+.dateBox {
+    display: flex;
+    font-size: 14px;
+    width: 100px;
+    align-items: end;
+}
