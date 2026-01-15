@@ -4,16 +4,22 @@ import useDnd from "../hooks/useDnd.jsx";
 import styles from "./Home.module.css";
 import SearchBar from "./SearchBar.jsx";
 import Button from "./Button.jsx";
+import Modal from "./Modal.jsx";
+import useCreateModal from "../hooks/useCreateModal.jsx";
+import stylesBtn from "./Button.module.css";
 
 const Home = () => {
   const { onDragEnd } = useDnd();
+  const { isCreateModal, onClose } = useCreateModal();
+  const { onOpen } = useCreateModal();
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
         <p className={styles.p}>태스크 관리 시스템</p>
         <div className={styles.betweenBox}>
           <SearchBar />
-          <Button />
+          <Button styles={stylesBtn} name={"추가"} onClick={onOpen} />
         </div>
       </header>
       <main className={styles.mainBox}>
@@ -23,6 +29,7 @@ const Home = () => {
           <DndBanner idx={2} name={"DONE"} />
         </DragDropContext>
       </main>
+      {isCreateModal && <Modal onClose={onClose} />}
     </div>
   );
 };
