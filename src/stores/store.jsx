@@ -11,6 +11,10 @@ const ZustandStore = create(
         set((state) => {
           const newData = state.data.map((data) => [...data]);
           const [moveData] = newData[sArrIdx].splice(sIdx, 1);
+
+          moveData.status =
+            dArrIdx === 0 ? "todo" : dArrIdx === 1 ? "in-progress" : "done";
+
           newData[dArrIdx].splice(dIdx, 0, moveData);
 
           return { data: newData };
