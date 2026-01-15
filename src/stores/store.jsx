@@ -1,17 +1,23 @@
 import { create } from "zustand/react";
 import { doneData, inProgressData, todoData } from "./data.js";
+import { persist } from "zustand/middleware";
 
-const ZustandStore = create((set) => ({
-  data: [todoData, inProgressData, doneData],
+const ZustandStore = create(
+  persist(
+    (set) => ({
+      data: [todoData, inProgressData, doneData],
 
-  setData: ({ sIdx, dIdx, sArrIdx, dArrIdx }) =>
-    set((state) => {
-      const newData = state.data.map((data) => [...data]);
-      const [moveData] = newData[sArrIdx].splice(sIdx, 1);
-      newData[dArrIdx].splice(dIdx, 0, moveData);
+      setData: ({ sIdx, dIdx, sArrIdx, dArrIdx }) =>
+        set((state) => {
+          const newData = state.data.map((data) => [...data]);
+          const [moveData] = newData[sArrIdx].splice(sIdx, 1);
+          newData[dArrIdx].splice(dIdx, 0, moveData);
 
-      return { data: newData };
+          return { data: newData };
+        }),
     }),
-}));
+    { name: "task-storage" },
+  ),
+);
 
 export default ZustandStore;

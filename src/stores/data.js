@@ -77,4 +77,25 @@ export const doneData = [
     priority: "Low",
     date: getCurrentDate(),
   },
+  {
+    id: 9,
+    title: "타이틀10",
+    description: "드래그 앤 드롭 UX 개선",
+    priority: "High",
+    date: getCurrentDate(),
+  },
+  {
+    id: 10,
+    title: "타이틀11",
+    description: "상태 변경 시 애니메이션 추가",
+    priority: "Medium",
+    date: getCurrentDate(),
+  },
+  {
+    id: 11,
+    title: "타이틀12",
+    description: "불필요한 콘솔 로그 제거",
+    priority: "Low",
+    date: getCurrentDate(),
+  },
 ];
