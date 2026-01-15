@@ -15,7 +15,7 @@ const Card = ({ item }) => {
         <div className={styles.descriptionBox}>{item.description}</div>
         <div className={styles.priorityDateBox}>
           <div className={styles.priorityBox}>{item.priority}</div>
-          <div className={styles.dateBox}>{item.date}</div>
+          <div className={styles.dateBox}>{item.updatedAt}</div>
         </div>
       </div>
     </main>
