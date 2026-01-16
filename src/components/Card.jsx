@@ -11,7 +11,7 @@ const PriorityColor = {
   Low: styles.lineLow,
 };
 
-const Card = ({ item }) => {
+const Card = ({ item, snapshot }) => {
   const {
     onDelete,
     onMore,
@@ -28,7 +28,9 @@ const Card = ({ item }) => {
   const isDeleteOpen = isDeleteModal && deleteTargetId === item.id;
 
   return (
-    <main className={styles.container}>
+    <main
+      className={`${styles.container} ${snapshot.isDragging ? styles.drag : ""}`}
+    >
       <section className={`${styles.line} ${PriorityColor[item.priority]}`} />
       <div className={styles.box}>
         <div className={styles.header}>

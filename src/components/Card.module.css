@@ -109,3 +109,21 @@
     width: 18px;
     height: 18px;
 }
+
+@keyframes shine {
+    0% {
+        background-color: white;
+    }
+    50% {
+        background-color: rgba(77, 150, 255, 1);
+    }
+    100% {
+        background-color: white;
+    }
+}
+
+.drag {
+    animation: shine 2s ease-in-out infinite;
+    transform: scale(1.02);
+    z-index: 10;
+}

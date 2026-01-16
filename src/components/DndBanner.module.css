@@ -30,3 +30,10 @@
     font-weight: bolder;
     flex-shrink: 0;
 }
+
+.drag {
+    background-color: rgba(77, 150, 255, 0.08);
+    border: 2px dashed rgba(77, 150, 255, 0.4);
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
