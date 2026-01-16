@@ -1,4 +1,7 @@
 import styles from "./Card.module.css";
+import deleteImage from "../assets/delete.png";
+import moreImage from "../assets/more.png";
+import useCard from "../hooks/useCard";
 
 const PriorityColor = {
   High: styles.lineHigh,
@@ -7,11 +10,24 @@ const PriorityColor = {
 };
 
 const Card = ({ item }) => {
+  const { onDelete } = useCard();
+
   return (
     <main className={styles.container}>
       <section className={`${styles.line} ${PriorityColor[item.priority]}`} />
       <div className={styles.box}>
-        <div className={styles.titleBox}>{item.title}</div>
+        <div className={styles.header}>
+          <div className={styles.titleBox}>{item.title}</div>
+          <div className={styles.btnBox}>
+            <img src={moreImage} alt="more" className={styles.moreImage} />
+            <img
+              src={deleteImage}
+              alt="delete"
+              className={styles.deleteImage}
+              onClick={() => onDelete(item.id)}
+            />
+          </div>
+        </div>
         <div className={styles.descriptionBox}>{item.description}</div>
         <div className={styles.priorityDateBox}>
           <div className={styles.priorityBox}>{item.priority}</div>

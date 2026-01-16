@@ -1,6 +1,6 @@
 .container {
     color: #545454;
-    width: 100%;
+    width: 400px;
     height: 140px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -48,8 +48,8 @@
 }
 
 .titleBox {
-    width: 360px;
-    height: 30%;
+    width: 260px;
+    height: 100%;
     text-align: start;
     font-size: 18px;
     font-weight: bold;
@@ -80,4 +80,32 @@
     font-size: 14px;
     width: 100px;
     align-items: end;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 30%;
+}
+
+.btnBox {
+    height: 100%;
+    width: 80px;
+    display: flex;
+    justify-content: end;
+    align-items: start;
+    gap: 10px;
+    padding: 4px;
+}
+
+.deleteImage {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+}
+
+.moreImage {
+    width: 18px;
+    height: 18px;
 }
