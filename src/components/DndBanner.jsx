@@ -5,8 +5,12 @@ import Card from "./Card.jsx";
 import { useShallow } from "zustand/react/shallow";
 
 const DndBanner = ({ idx, name }) => {
-  const [data, searchKeyword] = ZustandStore(
-    useShallow((state) => [state.data, state.searchKeyword]),
+  const [data, searchKeyword, priorityFilter] = ZustandStore(
+    useShallow((state) => [
+      state.data,
+      state.searchKeyword,
+      state.priorityFilter,
+    ]),
   );
 
   return (
@@ -20,6 +24,8 @@ const DndBanner = ({ idx, name }) => {
             className={`${styles.dropBox} ${snapshot.isDraggingOver ? styles.drag : ""}`}
           >
             {data[idx].map((item, i) =>
+              (priorityFilter === "ALL" ||
+                item.priority.includes(priorityFilter)) &&
               item.title.toLowerCase().includes(searchKeyword.toLowerCase()) ? (
                 <Draggable
                   draggableId={`${item.id}`}

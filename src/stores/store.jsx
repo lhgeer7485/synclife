@@ -77,6 +77,14 @@ const ZustandStore = create(
         });
       },
 
+      //우선순위필터
+      priorityFilter: "ALL",
+
+      setPriorityFilter: (priority) =>
+        set(() => ({
+          priorityFilter: priority,
+        })),
+
       // 검색
       searchKeyword: "",
 
