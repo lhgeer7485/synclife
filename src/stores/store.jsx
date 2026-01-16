@@ -25,9 +25,9 @@ const ZustandStore = create(
         set((state) => {
           const newTask = {
             id: state.nextId,
-            title: title,
-            description: description,
-            priority: priority,
+            title,
+            description,
+            priority,
             status: "todo",
             createdAt: getCurrentDate(),
             updatedAt: getCurrentDate(),
@@ -38,7 +38,7 @@ const ZustandStore = create(
 
           return {
             data: newData,
-            nextId: state.nextId + 1, // id 1 증가
+            nextId: state.nextId + 1,
           };
         });
       },
@@ -47,6 +47,26 @@ const ZustandStore = create(
         set((state) => {
           const newData = state.data.map((data) =>
             data.filter((task) => task.id !== id),
+          );
+
+          return { data: newData };
+        });
+      },
+
+      updateData: (id, title, description, priority) => {
+        set((state) => {
+          const newData = state.data.map((data) =>
+            data.map((task) =>
+              task.id === id
+                ? {
+                    ...task,
+                    title,
+                    description,
+                    priority,
+                    updatedAt: getCurrentDate(),
+                  }
+                : task,
+            ),
           );
 
           return { data: newData };
@@ -63,6 +83,36 @@ const ZustandStore = create(
       closeCreateModal: () =>
         set(() => ({
           isCreateModal: false,
+        })),
+
+      isMoreModal: false,
+      selectedTaskId: null,
+
+      openMoreModal: (id) =>
+        set(() => ({
+          isMoreModal: true,
+          selectedTaskId: id,
+        })),
+
+      closeMoreModal: () =>
+        set(() => ({
+          isMoreModal: false,
+          selectedTaskId: null,
+        })),
+
+      isDeleteModal: false,
+      deleteTargetId: null,
+
+      openDeleteModal: (id) =>
+        set(() => ({
+          isDeleteModal: true,
+          deleteTargetId: id,
+        })),
+
+      closeDeleteModal: () =>
+        set(() => ({
+          isDeleteModal: false,
+          deleteTargetId: null,
         })),
     }),
     { name: "task-storage" },
