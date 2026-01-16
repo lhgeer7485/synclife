@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ZustandStore from "../stores/store.jsx";
 import { validate } from "../utils/validate.js";
 
-const useCreateTask = () => {
-  const [checkPriority, setCheckPriority] = useState("High");
+const useUpdateTask = (item) => {
+  const [checkPriority, setCheckPriority] = useState("");
   const [inputTitle, setInputTitle] = useState("");
   const [inputDescription, setInputDescription] = useState("");
   const [msg, setMsg] = useState("");
-  const addData = ZustandStore((state) => state.addData);
+  const updateData = ZustandStore((state) => state.updateData);
 
   const onChange = (e) => {
     const { value } = e.target;
@@ -32,10 +32,16 @@ const useCreateTask = () => {
       setMsg("제목을 두 글자 이상 입력해주세요.");
     } else {
       setMsg("");
-      addData(inputTitle, inputDescription, checkPriority);
+      updateData(item.id, inputTitle, inputDescription, checkPriority);
       onClose();
     }
   };
+
+  useEffect(() => {
+    setInputTitle(item.title);
+    setInputDescription(item.description);
+    setCheckPriority(item.priority);
+  }, [item]);
 
   return {
     checkPriority,
@@ -49,4 +55,4 @@ const useCreateTask = () => {
   };
 };
 
-export default useCreateTask;
+export default useUpdateTask;

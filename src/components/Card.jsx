@@ -2,6 +2,8 @@ import styles from "./Card.module.css";
 import deleteImage from "../assets/delete.png";
 import moreImage from "../assets/more.png";
 import useCard from "../hooks/useCard";
+import More from "./More.jsx";
+import Dialog from "./Dialog.jsx";
 
 const PriorityColor = {
   High: styles.lineHigh,
@@ -10,7 +12,20 @@ const PriorityColor = {
 };
 
 const Card = ({ item }) => {
-  const { onDelete } = useCard();
+  const {
+    onDelete,
+    onMore,
+    onClose,
+    isMoreModal,
+    selectedTaskId,
+    isDeleteModal,
+    deleteTargetId,
+    onConfirmDelete,
+    closeDeleteModal,
+  } = useCard();
+
+  const isOpen = isMoreModal && selectedTaskId === item.id;
+  const isDeleteOpen = isDeleteModal && deleteTargetId === item.id;
 
   return (
     <main className={styles.container}>
@@ -19,7 +34,12 @@ const Card = ({ item }) => {
         <div className={styles.header}>
           <div className={styles.titleBox}>{item.title}</div>
           <div className={styles.btnBox}>
-            <img src={moreImage} alt="more" className={styles.moreImage} />
+            <img
+              src={moreImage}
+              alt="more"
+              className={styles.moreImage}
+              onClick={() => onMore(item.id)}
+            />
             <img
               src={deleteImage}
               alt="delete"
@@ -34,6 +54,10 @@ const Card = ({ item }) => {
           <div className={styles.dateBox}>{item.updatedAt}</div>
         </div>
       </div>
+      {isOpen && <More onClose={onClose} item={item} key={item.id} />}
+      {isDeleteOpen && (
+        <Dialog onConfirm={onConfirmDelete} onClose={closeDeleteModal} />
+      )}
     </main>
   );
 };

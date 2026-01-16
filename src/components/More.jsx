@@ -1,13 +1,13 @@
-import styles from "./Modal.module.css";
+import styles from "./More.module.css";
 import SelectBox from "./SelectBox.jsx";
-import useCreateTask from "../hooks/useCreateTask.jsx";
 import InputBoxTitle from "./InputBoxTitle.jsx";
 import InputBoxDescription from "./InputBoxDescription.jsx";
 import Button from "./Button.jsx";
 import stylesButtonConfirm from "./ButtonConfirm.module.css";
 import stylesButtonCancel from "./ButtonCancel.module.css";
+import useUpdateTask from "../hooks/useUpdateTask.jsx";
 
-const Modal = ({ onClose }) => {
+const More = ({ onClose, item }) => {
   const {
     checkPriority,
     onChange,
@@ -17,12 +17,12 @@ const Modal = ({ onClose }) => {
     msg,
     inputTitle,
     inputDescription,
-  } = useCreateTask();
+  } = useUpdateTask(item);
 
   return (
     <main className={styles.container} onClick={onClose}>
       <div className={styles.box} onClick={(e) => e.stopPropagation()}>
-        <p className={styles.header}>태스크 생성</p>
+        <p className={styles.header}>태스크 정보</p>
         <SelectBox checkPriority={checkPriority} onChange={onChange} />
         <InputBoxTitle onChange={onInputTitle} msg={msg} value={inputTitle} />
         <InputBoxDescription
@@ -30,6 +30,8 @@ const Modal = ({ onClose }) => {
           value={inputDescription}
         />
         <div className={styles.btnBox}>
+          <p className={styles.p}>생성일 : {item.createdAt}</p>
+          <p className={styles.p}>수정일 : {item.updatedAt}</p>
           <Button
             styles={stylesButtonConfirm}
             name={"확인"}
@@ -42,4 +44,4 @@ const Modal = ({ onClose }) => {
   );
 };
 
-export default Modal;
+export default More;
