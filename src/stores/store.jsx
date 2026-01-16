@@ -8,6 +8,7 @@ const ZustandStore = create(
       data: [todoData, inProgressData, doneData],
       nextId: todoData.length,
 
+      // dnd 이동 후 배열처리
       setData: ({ sIdx, dIdx, sArrIdx, dArrIdx }) =>
         set((state) => {
           const newData = state.data.map((data) => [...data]);
@@ -21,6 +22,7 @@ const ZustandStore = create(
           return { data: newData };
         }),
 
+      // 태스크 생성
       addData: (title, description, priority) => {
         set((state) => {
           const newTask = {
@@ -43,6 +45,7 @@ const ZustandStore = create(
         });
       },
 
+      // 태스크 삭제
       deleteData: (id) => {
         set((state) => {
           const newData = state.data.map((data) =>
@@ -53,6 +56,7 @@ const ZustandStore = create(
         });
       },
 
+      // 태스크 수정
       updateData: (id, title, description, priority) => {
         set((state) => {
           const newData = state.data.map((data) =>
@@ -73,8 +77,17 @@ const ZustandStore = create(
         });
       },
 
+      // 검색
+      searchKeyword: "",
+
+      setSearchKeyword: (keyword) =>
+        set(() => ({
+          searchKeyword: keyword,
+        })),
+
       isCreateModal: false,
 
+      // 태스크 생성 모달
       openCreateModal: () =>
         set(() => ({
           isCreateModal: true,
@@ -88,6 +101,7 @@ const ZustandStore = create(
       isMoreModal: false,
       selectedTaskId: null,
 
+      // 태스크 수정, 상세정보 모달
       openMoreModal: (id) =>
         set(() => ({
           isMoreModal: true,
@@ -103,6 +117,7 @@ const ZustandStore = create(
       isDeleteModal: false,
       deleteTargetId: null,
 
+      // 태스크 삭제 모달
       openDeleteModal: (id) =>
         set(() => ({
           isDeleteModal: true,
@@ -115,7 +130,13 @@ const ZustandStore = create(
           deleteTargetId: null,
         })),
     }),
-    { name: "task-storage" },
+    {
+      name: "task-storage",
+      partialize: (state) => ({
+        data: state.data,
+        nextId: state.nextId,
+      }),
+    },
   ),
 );
 
