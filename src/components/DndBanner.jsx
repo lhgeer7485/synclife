@@ -13,11 +13,11 @@ const DndBanner = ({ idx, name }) => {
     <main className={styles.container}>
       <header className={styles.header}>{name}</header>
       <Droppable droppableId={`${idx}`}>
-        {(provided) => (
+        {(provided, snapshot) => (
           <div
             ref={provided.innerRef}
             {...provided.droppableProps}
-            className={styles.dropBox}
+            className={`${styles.dropBox} ${snapshot.isDraggingOver ? styles.drag : ""}`}
           >
             {data[idx].map((item, i) =>
               item.title.toLowerCase().includes(searchKeyword.toLowerCase()) ? (
@@ -26,14 +26,14 @@ const DndBanner = ({ idx, name }) => {
                   key={`${item.title}-${item.id}`}
                   index={i}
                 >
-                  {(provided) => (
+                  {(provided, snapshot) => (
                     <div
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                       className={styles.box}
                     >
-                      <Card item={item} />
+                      <Card item={item} snapshot={snapshot} />
                     </div>
                   )}
                 </Draggable>
