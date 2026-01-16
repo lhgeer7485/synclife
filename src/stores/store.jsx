@@ -43,6 +43,16 @@ const ZustandStore = create(
         });
       },
 
+      deleteData: (id) => {
+        set((state) => {
+          const newData = state.data.map((data) =>
+            data.filter((task) => task.id !== id),
+          );
+
+          return { data: newData };
+        });
+      },
+
       isCreateModal: false,
 
       openCreateModal: () =>
