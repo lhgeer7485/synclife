@@ -1,14 +1,14 @@
 import { DragDropContext } from "@hello-pangea/dnd";
 import DndBanner from "./DndBanner.jsx";
-import useDnd from "../hooks/useDnd.jsx";
+import useDnd from "../../hooks/useDnd.jsx";
 import styles from "./Home.module.css";
-import SearchBar from "./SearchBar.jsx";
-import Button from "./Button.jsx";
-import Modal from "./Modal.jsx";
-import useCreateModal from "../hooks/useCreateModal.jsx";
-import stylesBtn from "./Button.module.css";
-import FilterBox from "./FilterBox.jsx";
-import useFilter from "../hooks/useFilter.jsx";
+import SearchBar from "../search/SearchBar.jsx";
+import Button from "../button/Button.jsx";
+import Modal from "../modal/Modal.jsx";
+import useCreateModal from "../../hooks/useCreateModal.jsx";
+import stylesBtn from "../button/Button.module.css";
+import FilterBox from "../filter/FilterBox.jsx";
+import useFilter from "../../hooks/useFilter.jsx";
 
 const Home = () => {
   const { onDragEnd } = useDnd();
