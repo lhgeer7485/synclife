@@ -1,11 +1,11 @@
 import styles from "./More.module.css";
-import SelectBox from "./SelectBox.jsx";
-import InputBoxTitle from "./InputBoxTitle.jsx";
-import InputBoxDescription from "./InputBoxDescription.jsx";
-import Button from "./Button.jsx";
-import stylesButtonConfirm from "./ButtonConfirm.module.css";
-import stylesButtonCancel from "./ButtonCancel.module.css";
-import useUpdateTask from "../hooks/useUpdateTask.jsx";
+import SelectBox from "../input/SelectBox.jsx";
+import InputBoxTitle from "../input/InputBoxTitle.jsx";
+import InputBoxDescription from "../input/InputBoxDescription.jsx";
+import Button from "../button/Button.jsx";
+import stylesButtonConfirm from "../button/ButtonConfirm.module.css";
+import stylesButtonCancel from "../button/ButtonCancel.module.css";
+import useUpdateTask from "../../hooks/useUpdateTask.jsx";
 
 const More = ({ onClose, item }) => {
   const {

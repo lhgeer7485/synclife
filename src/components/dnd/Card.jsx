@@ -1,9 +1,9 @@
 import styles from "./Card.module.css";
-import deleteImage from "../assets/delete.png";
-import moreImage from "../assets/more.png";
-import useCard from "../hooks/useCard";
-import More from "./More.jsx";
-import Dialog from "./Dialog.jsx";
+import deleteImage from "../../assets/delete.png";
+import moreImage from "../../assets/more.png";
+import useCard from "../../hooks/useCard.jsx";
+import More from "../modal/More.jsx";
+import Dialog from "../modal/Dialog.jsx";
 
 const PriorityColor = {
   High: styles.lineHigh,

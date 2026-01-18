@@ -1,6 +1,6 @@
 import styles from "./SearchBar.module.css";
-import searchImage from "../assets/search.png";
-import useSearch from "../hooks/useSearch.jsx";
+import searchImage from "../../assets/search.png";
+import useSearch from "../../hooks/useSearch.jsx";
 
 const SearchBar = () => {
   const { onChange } = useSearch();

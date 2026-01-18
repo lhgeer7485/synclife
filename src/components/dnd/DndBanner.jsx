@@ -1,6 +1,6 @@
 import { Draggable, Droppable } from "@hello-pangea/dnd";
 import styles from "./DndBanner.module.css";
-import ZustandStore from "../stores/store.jsx";
+import ZustandStore from "../../stores/store.jsx";
 import Card from "./Card.jsx";
 import { useShallow } from "zustand/react/shallow";
 
