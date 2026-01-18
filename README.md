@@ -1,16 +1,163 @@
-# React + Vite
+# 🗂 태스크 관리 시스템
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+프론트엔드 면접 과제로 진행한 태스크 관리 웹 애플리케이션입니다.  
+태스크 생성·수정·삭제 및 드래그 앤 드롭을 통해 직관적으로 일정을 관리할 수 있습니다.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 프로젝트 정보
 
-## React Compiler
+- **제목**: 태스크 관리 시스템
+- **제출일**: 2026-01-18
+- **개발 기간**: 2026-01-15 ~ 2026-01-16 (총 2일)
+- **개발 기간 사유**:  
+  주말 개인 일정(경조사)으로 인해 제한된 기간 내 개발을 진행하였습니다.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ▶️ 프로젝트 실행 방법
+
+### 배포 환경
+- **GitHub Pages**  
+  https://lhgeer7485.github.io/synclife/
+
+### 로컬 실행
+```bash
+npm install
+npm run dev
+```
+
+---
+
+
+## 🛠 사용 기술 스택
+
+- React
+- JavaScript
+- Zustand
+- CSS
+- @hello-pangea/dnd
+
+---
+
+## ✨ 구현 기능
+
+### Priority 1 - 필수 구현
+
+- 기본 칸반 보드 (To Do / In Progress / Done)
+- 태스크 카드 표시
+  - 제목 (필수)
+  - 우선순위 (High / Medium / Low)
+  - 생성 날짜
+- 태스크 추가
+  - 제목, 우선순위 필수 입력
+  - 설명 선택 입력
+- localStorage 기반 데이터 영구 저장
+- 새로고침 시 데이터 유지
+- 초기 샘플 데이터 10개 이상 제공
+- GitHub Pages 배포 및 정상 동작 확인
+
+
+### Priority 2 - 권장 구현
+
+- 드래그 앤 드롭
+  - 컬럼 간 태스크 이동
+  - 드래그 중 시각적 피드백
+  - 드롭 영역 하이라이트
+- 태스크 관리
+  - 수정 (제목, 설명, 우선순위)
+  - 삭제 (확인 다이얼로그)
+  - 상세 보기
+- 기본 검색
+  - 제목 기반 실시간 검색
+  - 검색 결과 즉시 반영
+
+
+### Priority 3 - 추가 구현
+
+- 우선순위별 필터 (High / Medium / Low)
+- 검색 디바운싱 (300ms)
+
+---
+
+## ❌ 미구현 기능 및 사유
+
+### 고급 필터링
+
+- 상태별 필터  
+  → 상태(todo / in-progress / done)가 이미 화면에 구분되어 표시된다고 판단
+- 태그 시스템 및 태그별 필터  
+  → 개발 시간 부족
+- 다중 필터 조합 (AND 조건)  
+  → 태그 시스템 미반영으로 우선순위 낮다고 판단
+
+
+### 검색 고도화
+
+- 검색어 하이라이트  
+  → 제목 기반 검색으로 우선순위 낮다고 판단
+- 최근 검색어 저장  
+  → 우선순위 낮다고 판단
+
+
+### UI / UX 개선
+
+- 반응형 디자인  
+  → 개발 시간 부족 (미완성, 커밋 X)
+- 애니메이션 효과  
+  → 일부 버튼 강조만 적용
+- 다크 모드  
+  → 우선순위 낮다고 판단
+- 빈 상태 안내 메시지  
+  → 개발 시간 부족
+
+---
+
+### 추가 기능
+
+- 태스크 통계  
+  → DnD 구조상 시각적으로 충분하다고 판단
+- 정렬 기능 (날짜 / 우선순위)  
+  → 개발 시간 부족
+- 키보드 단축키  
+  → 우선순위 낮다고 판단
+
+---
+
+## 🧠 개발 과정
+
+기본적인 태스크 관리 시스템이므로 CRUD 기능을 필수로 판단하여 우선 구현했습니다.  
+이후 사용성을 고려해 드래그 앤 드롭 기능을 추가하고,  
+검색 → 우선순위 필터 → 디바운싱 순으로 우선도를 정해 개발했습니다.
+
+가독성과 유지보수를 위해 UI와 로직을 분리했습니다.  
+
+재사용 가능한 버튼 컴포넌트는  
+동작 메소드와 스타일만 변경하면 사용할 수 있도록 설계했습니다.
+
+짧은 개발 기간을 고려해 TypeScript 대신 JavaScript를 선택했습니다.  
+CRUD, DnD 이동, 모달 상태 관리를 위해 Zustand를 사용했고,  
+태스크 데이터를 localStorage에 자동 저장했습니다.
+
+---
+
+## 📦 태스크 데이터 속성
+
+- `id`: 유니크 ID
+- `title`: 제목 
+- `description`: 설명 
+- `status`: todo / in-progress / done
+- `priority`: high / medium / low
+- `createdAt`: 생성 일시
+- `updatedAt`: 수정 일시
+
+
+---
+
+
+## 🤖 사용 AI 및 활용
+
+- **ChatGPT**
+  - 에러 분석
+  - 정규식 작성
